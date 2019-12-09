@@ -39,6 +39,13 @@ namespace Acme.SimpleTaskApp.Web.Startup
                     url: "Workers",
                     icon: "fa fa-tasks"
                     )
+                ).AddItem(
+                new MenuItemDefinition(
+                    "Certificates",
+                    L("Certificates"),
+                    url: "Certs",
+                    icon: "fa fa-tasks"
+                    )
                 );
         }
 

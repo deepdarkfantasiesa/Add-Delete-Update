@@ -1,0 +1,46 @@
+﻿@model Acme.SimpleTaskApp.Web.Models.CertificateIndexViewModel
+
+@{
+    ViewBag.Title = L("WorkerList");
+    ViewBag.ActiveMenu = "WorkerList"; //Matches with the menu name in SimpleTaskAppNavigationProvider to highlight the menu item
+}
+
+@section scripts
+{
+    <environment names="Development">
+        
+        <script src="~/js/views/jquery-extensions.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        
+        <script src="~/js/views/jquery-extensions.js"></script>
+
+    </environment>
+}
+
+
+<h2>@L("WorkerList")</h2>
+
+<div class="row">
+
+    <ul class="list-group" id="WorkerList">
+
+        <!--注意看这里，这里的Certs就是Model文件夹下CertificateIndexViewModel.cs里的那个，然后重命名Certs为worker，通过worker我们可以直接调用数据库里搜出来的数据然后展示出来-->
+
+        @foreach (var worker in Model.Certs)
+        {
+            <li>
+                <div style="border: 1px solid #808080">
+                    <h4>@worker.Certification</h4>
+                    年龄：@worker.Certification 类型：@worker.CreationTime 区域：@worker.Id 电话：@worker.WorkerID
+                </div>
+            </li>
+
+        }
+    </ul>
+
+
+
+
+</div>
