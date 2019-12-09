@@ -1,0 +1,45 @@
+﻿@model Acme.SimpleTaskApp.Web.Models.WorkerIndexViewModel
+
+@{
+    ViewBag.Title = L("WorkerList");
+    ViewBag.ActiveMenu = "WorkerList"; //Matches with the menu name in SimpleTaskAppNavigationProvider to highlight the menu item
+}
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/js/views/workers/WorkerUpdate.js"></script>
+        <script src="~/js/views/jquery-extensions.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/views/workers/WorkerUpdate.min.js"></script>
+        <script src="~/js/views/jquery-extensions.js"></script>
+
+    </environment>
+}
+
+
+<h2>@L("WorkerList")</h2>
+
+<div class="row">
+
+    <ul class="list-group" id="WorkerList">
+        @foreach (var worker in Model.Workers)
+        {
+            <li>
+                <div style="border: 1px solid #808080">
+                    <h4>@worker.Name</h4>
+                    年龄：@worker.Age 类型：@worker.Type 区域：@worker.WorkArea 电话：@worker.Tel 介绍：@worker.Description
+                    <a href="/Workers/Update?WorkerId=@worker.Id" style="border: 1px solid #ff6a00; float: right;">修改</a>
+                    <button id="@worker.Id" type="button" class="WorkerDelBtn">删除</button>
+                </div>
+            </li>
+
+        }
+    </ul>
+
+
+
+    <a class="btn btn-primary btn-sm" asp-action="Create">@L("AddNewWorker")</a>
+</div>

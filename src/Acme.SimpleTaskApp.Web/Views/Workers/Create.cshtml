@@ -1,0 +1,49 @@
+﻿@using Acme.SimpleTaskApp.Web.Models
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/js/views/workers/WorkerCreate.js"></script>
+        <script src="~/js/views/jquery-extensions.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/views/workers/WorkerCreate.min.js"></script>
+        <script src="~/js/views/jquery-extensions.js"></script>
+
+    </environment>
+}
+
+<h2>
+    @L("NewWorker")
+</h2>
+
+<form id="WorkerCreationForm">
+
+    
+        <label for="Name">姓名：</label>
+        <input type="text" name="Name" required maxlength="@Acme.SimpleTaskApp.Workers.HouseWorker.MaxLength">
+        <br />
+        <label for="Age">年龄：</label>
+        <input type="text" name="Age">
+        <br />
+        <label for="Type">类型：</label>
+        <input type="text" name="Type">
+        <br />
+        <label for="WorkerArea">区域：</label>
+        <input type="text" name="WorkArea">
+        <br />
+        <label for="Description">介绍：</label>
+        <input type="text" name="Description">
+        <br />
+        <label for="Tel">电话：</label>
+        <input type="text" name="Tel">
+        <br />
+        <label for="Tel">身份证</label>
+        <input type="text" name="IDCard">
+        <br />
+
+    <button id="WorkerSubmit" type="submit" class="btn btn-default">@L("Save")</button>
+
+</form>
+

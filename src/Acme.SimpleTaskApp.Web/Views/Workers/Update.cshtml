@@ -1,0 +1,71 @@
+﻿@model Acme.SimpleTaskApp.Web.Models.WorkerIndexViewModel
+
+@{
+    ViewBag.Title = L("WorkerList");
+    ViewBag.ActiveMenu = "WorkerList"; //Matches with the menu name in SimpleTaskAppNavigationProvider to highlight the menu item
+}
+
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/js/views/workers/WorkerUpdate.js"></script>
+        <script src="~/js/views/jquery-extensions.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/views/workers/WorkerUpdate.min.js"></script>
+        <script src="~/js/views/jquery-extensions.js"></script>
+
+    </environment>
+}
+
+
+
+<h2>@L("WorkerUpdate")</h2>
+
+<div class="row">
+
+    @{
+        if (Model.Workers.Count == 0)
+        {
+        <div>Select Error</div>
+        }
+        else {
+            var worker = Model.Workers[0];
+
+        <form id="WorkerUpdateForm">
+
+
+            <label for="Name">姓名：</label>
+            <input type="text" name="Name" value="@worker.Name" required maxlength="@Acme.SimpleTaskApp.Workers.HouseWorker.MaxLength">
+            <br />
+            <label for="Age">年龄：</label>
+            <input type="text" name="Age" value="@worker.Age">
+            <br />
+            <label for="Type">类型：</label>
+            <input type="text" name="Type" value="@worker.Type">
+            <br />
+            <label for="WorkerArea">区域：</label>
+            <input type="text" name="WorkArea" value="@worker.WorkArea">
+            <br />
+            <label for="Description">介绍：</label>
+            <input type="text" name="Description" value="@worker.Description">
+            <br />
+            <label for="Tel">电话：</label>
+            <input type="text" name="Tel" value="@worker.Tel">
+            <br />
+            <label for="Tel">身份证</label>
+            <input type="text" name="IDCard" value="@worker.IDCard">
+            <br />
+
+            <input type="hidden" name="Id" value="@worker.Id" />
+
+            <button id="WorkerUpdateSubmit" type="submit" class="btn btn-default">@L("Change")</button>
+
+        </form>
+        }
+    }
+
+
+</div>
