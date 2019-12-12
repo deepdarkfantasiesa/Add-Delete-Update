@@ -1,0 +1,55 @@
+﻿@model Acme.SimpleTaskApp.Web.Models.CertificateIndexViewModel
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/js/views/Certs/CertUpdate.js"></script><!--待改-->
+        <script src="~/js/views/jquery-extensions.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/views/Certs/CertUpdate.min.js"></script><!--待改-->
+        <script src="~/js/views/jquery-extensions.js"></script>
+
+    </environment>
+}
+
+<h2>@L("CertificationUpdate")</h2>
+
+<div class="row">
+    @{
+        if (Model.Certs.Count == 0)
+        {
+            <div>Select Error</div>
+        }
+        else
+        {
+            var cert = Model.Certs[0];
+
+<form id="CertificationUpdateForm">
+    <label for="">证书名称：</label>
+    <input type="text" name="Certification" value="@cert.Certification" required maxlength="256">
+    <br />
+    <label for="">日期：</label>
+    <input type="text" name="CreationTime" value="@cert.CreationTime">
+    <br />
+    <label for="">员工号</label>
+    <input type="text" name="WorkerID" value="@cert.WorkerID">
+
+    <input type="hidden" name="Id" value="@cert.Id" />
+
+    <button id="CertificationUpdateSubmit" type="submit" class="btn btn-default">@L("Change")</button>
+
+</form>
+
+
+
+            
+
+
+
+
+
+        }
+    }
+</div>

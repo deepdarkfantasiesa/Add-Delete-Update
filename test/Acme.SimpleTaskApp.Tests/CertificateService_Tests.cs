@@ -25,7 +25,7 @@ namespace Acme.SimpleTaskApp.Tests
 
             //Assert
             //output.Items.Count.ShouldBe(1);
-            output.Items.Count(t => t.Certification == "数据库系统工程师").ShouldBe(1);
+            output.Items.Count.ShouldBe(1);
         }
     }
 }

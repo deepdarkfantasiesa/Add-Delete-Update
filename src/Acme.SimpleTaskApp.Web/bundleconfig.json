@@ -5,44 +5,36 @@
       "wwwroot/js/views/home/index.js"
     ]
   },
-
   {
     "outputFileName": "wwwroot/js/views/tasks/index.min.js",
     "inputFiles": [
       "wwwroot/js/views/tasks/index.js"
     ]
   },
-
   {
     "outputFileName": "wwwroot/js/views/tasks/create.min.js",
     "inputFiles": [
       "wwwroot/js/views/tasks/create.js"
     ]
   },
-
   {
     "outputFileName": "wwwroot/js/views/workers/WorkerCreate.min.js",
     "inputFiles": [
       "wwwroot/js/views/workers/WorkerCreate.js"
     ]
   },
-
   {
     "outputFileName": "wwwroot/js/views/workers/WorkerUpdate.min.js",
     "inputFiles": [
       "wwwroot/js/views/workers/WorkerUpdate.js"
     ]
   },
-
-
-
   {
     "outputFileName": "wwwroot/js/views/jquery-extensions.min.js",
     "inputFiles": [
       "wwwroot/js/views/jquery-extensions.js"
     ]
   },
-
   {
     "outputFileName": "wwwroot/view-resources/Views/_Bundles/layout-libs.min.css",
     "inputFiles": [
@@ -72,6 +64,18 @@
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/views/Certs/CertCreate.min.js",
+    "inputFiles": [
+      "wwwroot/js/views/Certs/CertCreate.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/views/Certs/CertUpdate.min.js",
+    "inputFiles": [
+      "wwwroot/js/views/Certs/CertUpdate.js"
     ]
   }
 ]

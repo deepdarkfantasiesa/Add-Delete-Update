@@ -1,0 +1,33 @@
+﻿@using Acme.SimpleTaskApp.Web.Models
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/js/views/certs/CertCreate.js"></script>
+        <script src="~/js/views/jquery-extensions.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/views/workers/CertCreate.min.js"></script>
+        <script src="~/js/views/jquery-extensions.js"></script>
+
+    </environment>
+}
+
+<h2>
+    @L("NewCert")
+</h2>
+
+<form id="CertCreationForm">
+    <label for="Certification">证书名称</label>
+    <input type="text" name="Certification" required maxlength="256">
+    <br />
+    <label for="CreationTime">时间</label>
+    <input type="text" name="CreationTime" required maxlength="256">
+    <br />
+    <label for="WorkerID">员工号</label>
+    <input type="text" name="WorkerID" required maxlength="256">
+    <br />
+
+    <button id="CertSubmit" type="submit" class="btn btn-default">@L("Save")</button>
+</form>

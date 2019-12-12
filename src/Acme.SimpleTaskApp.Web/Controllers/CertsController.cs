@@ -25,5 +25,17 @@ namespace Acme.SimpleTaskApp.Web.Controllers
             var model = new CertificateIndexViewModel(output.Items);        /*---1.2---*/ //这一步实例化了一个CertificateIndexViewModel类型的变量，名字是model，实例化输入的参数是前面搜索出来的数据。这里点击CertificateIndexViewModel然后按F12跳转到定义它的地方（.Web项目下Models文件夹里CertificateIndexViewModel.cs文件）
             return View(model);                                             /*---1.3---*/ //这一步不用理解，但是必须要写！
         }
+
+        public ActionResult Create()//待改，添加检索已有员工的语句，参考TasksController里的Create函数
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> Update(GetCertificationInput input)
+        {
+            var output = await _certificateService.GetCertification(input);
+            var model = new CertificateIndexViewModel(output.Items);
+            return View(model);
+        }
     }
 }

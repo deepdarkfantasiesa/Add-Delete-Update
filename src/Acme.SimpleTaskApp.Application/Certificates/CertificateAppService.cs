@@ -22,7 +22,7 @@ namespace Acme.SimpleTaskApp.Certificates
         {
             var certificates = await _certificateRepository
                 .GetAll()
-                .OrderByDescending(t => t.CreationTime)
+                .OrderBy(t => t.Id)
                 .ToListAsync();
 
             return new ListResultDto<CertificateDto>(
@@ -30,6 +30,38 @@ namespace Acme.SimpleTaskApp.Certificates
             );
         }
 
+        public async Task<Certificate> Create(CreateCertificationInput input)
+        {
+            var cert = ObjectMapper.Map<Certificate>(input);
+            var cert2 = await _certificateRepository.InsertAsync(cert);
+            return cert2;
+        }
 
+        public async Task Update(CreateCertificationInput input)
+        {
+            var cert = ObjectMapper.Map<Certificate>(input);
+            await _certificateRepository.UpdateAsync(cert);
+        }
+
+        public async Task<ListResultDto<CertificateDto>> GetCertification(GetCertificationInput input)
+        {
+            var certs = await _certificateRepository
+                .GetAll()
+                .Where(t => t.Id == input.CertId)
+                .ToListAsync();
+
+            return new ListResultDto<CertificateDto>(
+                ObjectMapper.Map<List<CertificateDto>>(certs)
+                );
+        }
+        
+        public async System.Threading.Tasks.Task Delete(DeleteCertificationInput input)
+        {
+            var cert = new Certificate()
+            {
+                Id = input.Id
+            };
+            await _certificateRepository.DeleteAsync(cert);
+        }
     }
 }

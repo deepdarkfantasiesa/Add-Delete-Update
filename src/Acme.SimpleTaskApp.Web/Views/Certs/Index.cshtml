@@ -8,12 +8,12 @@
 @section scripts
 {
     <environment names="Development">
-        
+        <script src="~/js/views/Certs/CertUpdate.js"></script>
         <script src="~/js/views/jquery-extensions.js"></script>
     </environment>
 
     <environment names="Staging,Production">
-        
+        <script src="~/js/views/Certs/CertUpdate.min.js"></script>
         <script src="~/js/views/jquery-extensions.js"></script>
 
     </environment>
@@ -28,19 +28,29 @@
 
         <!--注意看这里，这里的Certs就是Model文件夹下CertificateIndexViewModel.cs里的那个，然后重命名Certs为worker，通过worker我们可以直接调用数据库里搜出来的数据然后展示出来-->
 
-        @foreach (var worker in Model.Certs)
+        @foreach (var certs in Model.Certs)
         {
-            <li>
-                <div style="border: 1px solid #808080">
-                    <h4>@worker.Certification</h4>
-                    年龄：@worker.Certification 类型：@worker.CreationTime 区域：@worker.Id 电话：@worker.WorkerID
-                </div>
-            </li>
-
+        <li>
+            <div style="border: 1px solid #808080">
+                <h6>
+                    证书号：@certs.Id
+                    <br />
+                    证书名称：@certs.Certification
+                    <br />
+                    员工号：@certs.WorkerID
+                    <br />
+                    创建时间：@certs.CreationTime
+                    <br />
+                    <a href="/Certs/Update?CertId=@certs.Id" style="border: 1px solid #ff6a00; float: right;">修改</a>
+                    <button id="@certs.Id" type="button" class="CertDelBtn">删除</button>
+                </h6>
+            </div>
+            
+        </li>
         }
     </ul>
 
-
+    <a class="btn btn-primary btn-sm" asp-action="Create">@L("AddNewCert")</a>
 
 
 </div>
